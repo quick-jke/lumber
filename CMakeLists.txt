@@ -14,7 +14,7 @@ set(GENERATED_DIR ${PROJECT_BINARY_DIR}/generated)
 file(MAKE_DIRECTORY ${GENERATED_DIR})
 
 add_custom_command(
-    OUTPUT ${GENERATED_DIR}/User.hpp ${GENERATED_DIR}/User_generated.cpp
+    OUTPUT ${GENERATED_DIR}/User.hpp ${GENERATED_DIR}/user_generated.cpp
     COMMAND python3 ${PROJECT_SOURCE_DIR}/scanner/scanner.py ${GENERATED_DIR}
     WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}
     COMMENT "Generating code using Lombok-like scanner"
@@ -22,8 +22,8 @@ add_custom_command(
 
 add_executable(example
     ${SOURCE_DIR}/main.cpp
-    ${GENERATED_DIR}/User_generated.cpp  
+    ${GENERATED_DIR}/user_generated.cpp  
 )
 
 
-set_property(SOURCE ${GENERATED_DIR}/User_generated.cpp PROPERTY GENERATED TRUE)
+set_property(SOURCE ${GENERATED_DIR}/user_generated.cpp PROPERTY GENERATED TRUE)

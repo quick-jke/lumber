@@ -1,5 +1,5 @@
 #include <iostream>
-#include "User.hpp"
+#include "user_generated.hpp"
 
 int main() {
     quick::User user("Alice", 30);

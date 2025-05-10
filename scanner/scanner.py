@@ -21,8 +21,8 @@ def scan_directory(path):
                 for cls in classes:
                     generated_code = generate_code(cls)
 
-                    header_file = os.path.join(output_dir, f"{cls['name']}.hpp")
-                    source_file = os.path.join(output_dir, f"{cls['name']}_generated.cpp")
+                    header_file = os.path.join(output_dir, f"{cls['name'].lower()}_generated.hpp")
+                    source_file = os.path.join(output_dir, f"{cls['name'].lower()}_generated.cpp")
 
                     with open(header_file, "w") as hfile:
                         guard = f"_{cls['name'].upper()}_HPP"
@@ -52,7 +52,7 @@ def scan_directory(path):
 
                     with open(source_file, "w") as cppfile:
                         cppfile.write("// Auto-generated code — DO NOT EDIT\n")
-                        cppfile.write(f"#include \"{cls['name']}.hpp\"\n\n")
+                        cppfile.write(f"#include \"{cls['name'].lower()}_generated.hpp\"\n\n")
                         cppfile.write("namespace quick {\n\n")
                         cppfile.write(generate_code(cls))
                         cppfile.write("\n} // namespace quick\n")
